@@ -81,7 +81,15 @@ class EmojiArtDocument: ObservableObject, Hashable, Equatable, Identifiable {
                 .replaceError(with: nil)
             fetchImageCancellable = publisher.assign(to: \.backgroundImage, on: self)
         }
-    }  
+    }
+    
+    func getCounter() -> Int {
+        return emojiArt.counter
+    }
+    
+    func incrementCounter() -> Void {
+        self.emojiArt.counter += 1
+    }
 }
 
 extension EmojiArt.Emoji {
