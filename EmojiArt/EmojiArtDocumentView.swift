@@ -1,18 +1,27 @@
 import SwiftUI
+import Combine
 
 struct EmojiArtDocumentView: View {
     @ObservedObject var document: EmojiArtDocument
     @State private var chosenPalette: String = ""
     @State private var isPastingExplanationPresented: Bool = false
     @State private var isConfirmationAlertPresented: Bool = false
+    
+    let timer = Timer.TimerPublisher(interval: 1.0, runLoop: .main, mode: .default)
+    let timerCancellable: Cancellable?
 
     init(document: EmojiArtDocument) {
+        self.timerCancellable = timer.connect()
         self.document = document
         chosenPalette = document.defaultPalette
     }
 
     var body: some View {
         VStack {
+            Text("Time worked: \(self.document.getCounter()) sec")
+                .onReceive(timer, perform: { _ in
+                    self.document.incrementCounter()
+                })
             HStack {
                 PaletteChooser(document: document, chosenPalette: $chosenPalette)
                 ScrollView(.horizontal) {
