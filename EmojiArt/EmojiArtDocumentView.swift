@@ -6,6 +6,7 @@ struct EmojiArtDocumentView: View {
     @State private var chosenPalette: String = ""
     @State private var isPastingExplanationPresented: Bool = false
     @State private var isConfirmationAlertPresented: Bool = false
+    @State private var counter: Int = 0
     
     let timer = Timer.TimerPublisher(interval: 1.0, runLoop: .main, mode: .default)
     let timerCancellable: Cancellable?
@@ -13,14 +14,15 @@ struct EmojiArtDocumentView: View {
     init(document: EmojiArtDocument) {
         self.timerCancellable = timer.connect()
         self.document = document
+        self.counter = document.getCounter()
         chosenPalette = document.defaultPalette
     }
 
     var body: some View {
         VStack {
-            Text("Time worked: \(self.document.getCounter()) sec")
+            EmojiArtCounterView(counter: self.$counter)
                 .onReceive(timer, perform: { _ in
-                    self.document.incrementCounter()
+                    self.counter = self.document.incrementCounter()
                 })
             HStack {
                 PaletteChooser(document: document, chosenPalette: $chosenPalette)
