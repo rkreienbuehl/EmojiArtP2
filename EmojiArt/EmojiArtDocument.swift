@@ -91,6 +91,25 @@ class EmojiArtDocument: ObservableObject, Hashable, Equatable, Identifiable {
         self.emojiArt.counter += 1
         return self.emojiArt.counter
     }
+    
+    func getColor() -> Color {
+        let color = UIColor(red: self.emojiArt.red, green: self.emojiArt.green, blue: self.emojiArt.blue, alpha: self.emojiArt.alpha)
+        return Color(color)
+    }
+    
+    func setColor(color: Color) -> Void {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        
+        UIColor(color).getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        
+        self.emojiArt.red = red
+        self.emojiArt.green = green
+        self.emojiArt.blue = blue
+        self.emojiArt.alpha = alpha
+    }
 }
 
 extension EmojiArt.Emoji {
