@@ -10,7 +10,11 @@ struct EmojiArtDocumentChooser: View {
         return NavigationView {
             
             if(self.editMode == .inactive){
+           
                 Grid(store.documents){ art in
+                    
+                        
+                    
                     NavigationLink(destination: EmojiArtDocumentView(document: art).navigationBarTitle(self.store.name(for: art))) {
                         VStack{
                             EmojiArtGridPreview(document: art)
@@ -20,6 +24,7 @@ struct EmojiArtDocumentChooser: View {
                             }.background(Color.white.opacity(0.6))
                         }
                     }
+                
                 }
                 .navigationBarTitle(self.store.name)
                 .navigationBarItems(
