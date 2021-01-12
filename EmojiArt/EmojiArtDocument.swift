@@ -87,8 +87,9 @@ class EmojiArtDocument: ObservableObject, Hashable, Equatable, Identifiable {
         return emojiArt.counter
     }
     
-    func incrementCounter() -> Void {
+    func incrementCounter() -> Int {
         self.emojiArt.counter += 1
+        return self.emojiArt.counter
     }
 }
 
