@@ -1,18 +1,42 @@
 import SwiftUI
+import Combine
 
 struct EmojiArtDocumentView: View {
     @ObservedObject var document: EmojiArtDocument
     @State private var chosenPalette: String = ""
     @State private var isPastingExplanationPresented: Bool = false
     @State private var isConfirmationAlertPresented: Bool = false
+    @State private var showColorPicker: Bool = false
+    @State private var backgroundColor: Color = Color.white
+    @State private var counter: Int = 0
+    
+    let timer = Timer.TimerPublisher(interval: 1.0, runLoop: .main, mode: .default)
+    let timerCancellable: Cancellable?
 
     init(document: EmojiArtDocument) {
+        self.timerCancellable = timer.connect()
         self.document = document
+        _backgroundColor = State(initialValue: document.getColor())
+        _counter = State(initialValue: document.getCounter())
         chosenPalette = document.defaultPalette
     }
 
     var body: some View {
-        VStack {
+        return VStack {
+            HStack {
+                EmojiArtCounterView(counter: self.$counter)
+                    .padding(10)
+                    .onReceive(timer, perform: { _ in
+                        self.counter = self.document.incrementCounter()
+                    })
+                Spacer()
+                ColorPicker("",selection: self.$backgroundColor)
+                    .labelsHidden()
+                    .padding(10)
+                    .onChange(of: backgroundColor) { _ in
+                        self.document.setColor(color: backgroundColor)
+                       }
+            }
             HStack {
                 PaletteChooser(document: document, chosenPalette: $chosenPalette)
                 ScrollView(.horizontal) {
@@ -27,7 +51,7 @@ struct EmojiArtDocumentView: View {
             }
             GeometryReader { geometry in
                 ZStack {
-                    Color.white.overlay(
+                    self.backgroundColor.overlay(
                         OptionalImage(uiImage: self.document.backgroundImage)
                             .scaleEffect(self.zoomScale)
                             .offset(self.panOffset)
@@ -84,7 +108,9 @@ struct EmojiArtDocumentView: View {
                     self.zoomToFit(backgroundImage, in: geometry.size)
                 }
             }
-        }
+        }.onAppear(perform: {
+            self.backgroundColor = self.document.getColor()
+        })
     }
 
     private var isLoading: Bool {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		17F97F5625AE34EB001D9183 /* EmojiArtGridPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F97F5525AE34EB001D9183 /* EmojiArtGridPreview.swift */; };
+		47B6A5E425AE1C7200897A8A /* EmojiArtCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B6A5E325AE1C7200897A8A /* EmojiArtCounterView.swift */; };
 		DE20D17224F94D96009B74D9 /* OptionalImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE20D17124F94D96009B74D9 /* OptionalImage.swift */; };
 		DE20D17424FD18E1009B74D9 /* AnimatableSystemFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE20D17324FD18E1009B74D9 /* AnimatableSystemFontModifier.swift */; };
 		DE68758E24F798EE00B58871 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE68758D24F798EE00B58871 /* AppDelegate.swift */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		17F97F5525AE34EB001D9183 /* EmojiArtGridPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtGridPreview.swift; sourceTree = "<group>"; };
+		47B6A5E325AE1C7200897A8A /* EmojiArtCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtCounterView.swift; sourceTree = "<group>"; };
 		DE20D17124F94D96009B74D9 /* OptionalImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalImage.swift; sourceTree = "<group>"; };
 		DE20D17324FD18E1009B74D9 /* AnimatableSystemFontModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatableSystemFontModifier.swift; sourceTree = "<group>"; };
 		DE68758A24F798EE00B58871 /* Emoji Art.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Emoji Art.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +91,7 @@
 				DE20D17324FD18E1009B74D9 /* AnimatableSystemFontModifier.swift */,
 				DE68758D24F798EE00B58871 /* AppDelegate.swift */,
 				DE6875A324F79F3F00B58871 /* EmojiArt.swift */,
+				47B6A5E325AE1C7200897A8A /* EmojiArtCounterView.swift */,
 				DE6875A124F7990100B58871 /* EmojiArtDocument.swift */,
 				F8E894EC250A8BB80057DD8A /* EmojiArtDocument+Palette.swift */,
 				F84F1FEB250E1CC600AC5101 /* EmojiArtDocumentStore.swift */,
@@ -204,6 +207,7 @@
 				F84F1FE9250BE10A00AC5101 /* Grid.swift in Sources */,
 				F8E894E9250A653D0057DD8A /* Spinning.swift in Sources */,
 				F84F1FE6250BB63600AC5101 /* PaletteEditor.swift in Sources */,
+				47B6A5E425AE1C7200897A8A /* EmojiArtCounterView.swift in Sources */,
 				F84F1FF0250E581F00AC5101 /* EditableText.swift in Sources */,
 				DE20D17424FD18E1009B74D9 /* AnimatableSystemFontModifier.swift in Sources */,
 				DE6875A224F7990100B58871 /* EmojiArtDocument.swift in Sources */,
@@ -276,7 +280,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -330,7 +334,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
