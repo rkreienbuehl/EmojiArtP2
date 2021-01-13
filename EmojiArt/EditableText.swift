@@ -18,8 +18,9 @@ struct EditableText: View {
             TextField(text, text: $editableText, onEditingChanged: { _ in
                 self.callOnChangedIfChanged()
             })
-                .opacity(isEditing ? 1 : 0)
-                .disabled(!isEditing)
+            .opacity(isEditing ? 1 : 0)
+            .disabled(!isEditing)
+            
             if !isEditing {
                 Text(text)
                     .opacity(isEditing ? 0 : 1)

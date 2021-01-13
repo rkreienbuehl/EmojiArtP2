@@ -22,29 +22,36 @@ class EmojiArtDocumentChooserTest: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    
+    
+    func testTitleEdit(){
         let app = XCUIApplication()
         app.launch()
-
         let documentsNavigationBar = app.navigationBars["Documents"]
-        
-        // make sure there is a document in the store
-        documentsNavigationBar.buttons["plus"].tap()
-        
-        // press edit
         documentsNavigationBar.buttons["Edit"].tap()
+        app.tables.children(matching: .cell).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .button).element.tap()
         
-        app.tables.children(matching: .cell).element(boundBy: 0).tap()
-    
-        app.keys["r"].tap()
-
+        //app.buttons["Keyboard"].tap()
+        app.popovers.scrollViews.otherElements.buttons["Show Keyboard"].tap()
+        app/*@START_MENU_TOKEN@*/.keys["delete"].press(forDuration: 1.6);/*[[".keyboards",".keys[\"Löschen\"]",".tap()",".press(forDuration: 1.6);",".keys[\"delete\"]"],[[[-1,4,2],[-1,1,2],[-1,0,1]],[[-1,4,2],[-1,1,2]],[[-1,3],[-1,2]]],[0,0]]@END_MENU_TOKEN@*/
+        
+        let tKey = app/*@START_MENU_TOKEN@*/.keys["t"]/*[[".keyboards.keys[\"t\"]",".keys[\"t\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        tKey.tap()
+        tKey.tap()
+        
+        let eKey = app/*@START_MENU_TOKEN@*/.keys["e"]/*[[".keyboards.keys[\"e\"]",".keys[\"e\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        eKey.tap()
+        eKey.tap()
+        
+        let sKey = app/*@START_MENU_TOKEN@*/.keys["s"]/*[[".keyboards.keys[\"s\"]",".keys[\"s\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        sKey.tap()
+        sKey.tap()
+        tKey.tap()
+        tKey.tap()
+        app/*@START_MENU_TOKEN@*/.buttons["Hide keyboard"]/*[[".keyboards.buttons[\"Hide keyboard\"]",".buttons[\"Hide keyboard\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         documentsNavigationBar.buttons["Done"].tap()
+      
         
-    
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
     func testLaunchPerformance() throws {
