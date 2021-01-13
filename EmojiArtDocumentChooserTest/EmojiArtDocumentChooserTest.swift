@@ -29,17 +29,17 @@ class EmojiArtDocumentChooserTest: XCTestCase {
         app.launch()
 
         let documentsNavigationBar = app.navigationBars["Documents"]
+        
+        // make sure there is a document in the store
+        documentsNavigationBar.buttons["plus"].tap()
+        
+        // press edit
         documentsNavigationBar.buttons["Edit"].tap()
         
-        app.tables.children(matching: .cell).matching(identifier: "chevron.right").element(boundBy: 0).buttons["chevron.right"].tap()
-        
-        let moreKey = app/*@START_MENU_TOKEN@*/.keys["more"]/*[[".keyboards",".keys[\"Zahlen\"]",".keys[\"more\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/
-        moreKey.tap()
-        moreKey.tap()
-        
-        let key = app/*@START_MENU_TOKEN@*/.keys["1"]/*[[".keyboards.keys[\"1\"]",".keys[\"1\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        key.tap()
-        key.tap()
+        app.tables.children(matching: .cell).element(boundBy: 0).tap()
+    
+        app.keys["r"].tap()
+
         documentsNavigationBar.buttons["Done"].tap()
         
     
