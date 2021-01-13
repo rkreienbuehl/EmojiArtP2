@@ -1,0 +1,58 @@
+//
+//  EmojiArtDocumentChooserTest.swift
+//  EmojiArtDocumentChooserTest
+//
+//  Created by Roger Kreienbuehl on 13.01.21.
+//  Copyright © 2021 fhnw. All rights reserved.
+//
+
+import XCTest
+
+class EmojiArtDocumentChooserTest: XCTestCase {
+
+    override func setUpWithError() throws {
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+
+        // In UI tests it is usually best to stop immediately when a failure occurs.
+        continueAfterFailure = false
+
+        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+    }
+
+    override func tearDownWithError() throws {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+
+    func testExample() throws {
+        // UI tests must launch the application that they test.
+        let app = XCUIApplication()
+        app.launch()
+
+        let documentsNavigationBar = app.navigationBars["Documents"]
+        documentsNavigationBar.buttons["Edit"].tap()
+        
+        app.tables.children(matching: .cell).matching(identifier: "chevron.right").element(boundBy: 0).buttons["chevron.right"].tap()
+        
+        let moreKey = app/*@START_MENU_TOKEN@*/.keys["more"]/*[[".keyboards",".keys[\"Zahlen\"]",".keys[\"more\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/
+        moreKey.tap()
+        moreKey.tap()
+        
+        let key = app/*@START_MENU_TOKEN@*/.keys["1"]/*[[".keyboards.keys[\"1\"]",".keys[\"1\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        key.tap()
+        key.tap()
+        documentsNavigationBar.buttons["Done"].tap()
+        
+    
+        // Use recording to get started writing UI tests.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+
+    func testLaunchPerformance() throws {
+        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
+            // This measures how long it takes to launch your application.
+            measure(metrics: [XCTApplicationLaunchMetric()]) {
+                XCUIApplication().launch()
+            }
+        }
+    }
+}
